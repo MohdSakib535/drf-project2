@@ -8,5 +8,5 @@ class serializer_data(serializers.ModelSerializer):
 
 class serializer_data2(serializers.ModelSerializer):
     class Meta:
-        model=Student
+        model=Studentclean
         fields='__all__'

@@ -11,9 +11,7 @@ class lc_data(GenericAPIView,ListModelMixin,CreateModelMixin):
     queryset=Student.objects.all()
     serializer_class=serializer_data
 
-
     def get(self,*args,**kwargs):
-
 
         print('args--',args)
         print('kwargs--',kwargs)
