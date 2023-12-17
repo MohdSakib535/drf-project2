@@ -46,7 +46,7 @@ class StudentCreateView(generics.CreateAPIView):
 
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
-        print('----',response)
+
 
         if response.status_code == status.HTTP_201_CREATED:
             student_data = response.data
