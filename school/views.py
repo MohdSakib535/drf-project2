@@ -10,11 +10,7 @@ from rest_framework import generics
 class lc_data(GenericAPIView,ListModelMixin,CreateModelMixin):
     queryset=Student.objects.all()
     serializer_class=serializer_data
-
-
     def get(self,*args,**kwargs):
-
-
         print('args--',args)
         print('kwargs--',kwargs)
         return self.list(*args,**kwargs)
@@ -23,6 +19,18 @@ class lc_data(GenericAPIView,ListModelMixin,CreateModelMixin):
         print('args- p-', args)
         print('kwargs--', kwargs)
         return self.create(*args,**kwargs)
+
+    def perform_create(self, serializer):
+        instance = serializer.save()
+        print('ins---',instance.name)
+        inst_data={'name':instance.name,
+                   'roll':instance.roll,
+                   'city':instance.city
+                   }
+        clean1_serializer = serializer_data2(data=inst_data)
+        if clean1_serializer.is_valid():
+            clean1_serializer.save()
+
 
 class rud_data(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin):
     queryset=Student.objects.all()
@@ -56,8 +64,7 @@ class StudentCreateView(generics.CreateAPIView):
                 city=student_data['city']
             )
 
-            # You can customize the response if needed
-            response.data['student_clean_id'] = student_clean_instance.id
+
 
         return response
 
