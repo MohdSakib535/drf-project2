@@ -5,6 +5,7 @@ from .models import Student,Studentclean
 from .serializer import serializer_data ,serializer_data2
 from rest_framework import status
 from rest_framework import generics
+from .checker import clean_city_data
 # Create your views here. go
 
 class lc_data(GenericAPIView,ListModelMixin,CreateModelMixin):
@@ -23,13 +24,18 @@ class lc_data(GenericAPIView,ListModelMixin,CreateModelMixin):
     def perform_create(self, serializer):
         instance = serializer.save()
         print('ins---',instance.name)
-        inst_data={'name':instance.name,
+        city_D=clean_city_data(instance.city)
+        print('----',city_D)
+        inst_data={'name':city_D,
                    'roll':instance.roll,
-                   'city':instance.city
+                   'city':instance.name,
                    }
         clean1_serializer = serializer_data2(data=inst_data)
+        print('clean1_serializer----',clean1_serializer)
         if clean1_serializer.is_valid():
             clean1_serializer.save()
+        else:
+            print('not valid')
 
 
 class rud_data(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin):
