@@ -5,7 +5,7 @@ from .models import Student,Studentclean
 from .serializer import serializer_data ,serializer_data2
 from rest_framework import status
 from rest_framework import generics
-# Create your views here.
+# Create your views here. go
 
 class lc_data(GenericAPIView,ListModelMixin,CreateModelMixin):
     queryset=Student.objects.all()
