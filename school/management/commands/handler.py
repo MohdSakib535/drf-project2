@@ -4,7 +4,7 @@ class Command(BaseCommand):
     help = 'Migrate data from Student to Studentclean'
 
     def handle(self, *args, **options):
-        # Step 1: Migrate data
+
         students = Student.objects.all()
         for student in students:
             student_clean_instance = Studentclean(

@@ -21,4 +21,5 @@ urlpatterns = [
     path('stu/',views.lc_data.as_view()),
     path('stu/<int:pk>',views.rud_data.as_view()),
     path('s/',views.StudentCreateView.as_view()),
+    path('d/',views.student_data.as_view()),
 ]

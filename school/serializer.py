@@ -9,4 +9,10 @@ class serializer_data(serializers.ModelSerializer):
 class serializer_data2(serializers.ModelSerializer):
     class Meta:
         model=Studentclean
-        fields='__all__'
+        fields = '__all__'
+
+
+class serializer_data3(serializers.ModelSerializer):
+    class Meta:
+        model=Studentclean
+        fields=['name','city']
