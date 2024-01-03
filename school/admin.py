@@ -5,8 +5,8 @@ from .models import Student,Studentclean
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display=['name','roll','city']
+    list_display=['name','roll','city','datetime_data']
 
 @admin.register(Studentclean)
 class StudentclnAdmin(admin.ModelAdmin):
-    list_display=['name','roll','city']
+    list_display=['name','roll','city','datetime_data']
