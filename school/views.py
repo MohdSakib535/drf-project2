@@ -155,3 +155,6 @@ def insert_raw_data(request):
         print(e)
         # Handle exceptions and return an error response if needed
         return Response({'detail': 'An error occurred.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+#end here
